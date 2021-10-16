@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F6A947EB-CD00-4C4C-B0D6-EC9807B4BA7E}</ProjectGuid>
+    <ProjectGuid>{DB57F873-B138-4506-B7EE-D9E977A8E675}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BlogSite.ViewModels</RootNamespace>
-    <AssemblyName>BlogSite.ViewModels</AssemblyName>
+    <RootNamespace>BlogSite.Infrastructure</RootNamespace>
+    <AssemblyName>BlogSite.Infrastructure</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,8 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="WebSite\BlogModel.cs" />
+    <Compile Include="ICacheService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Web\InMemoryCache.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

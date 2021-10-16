@@ -53,6 +53,9 @@
     <Reference Include="HtmlAgilityPack, Version=1.11.37.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <HintPath>..\packages\HtmlAgilityPack.1.11.37\lib\Net45\HtmlAgilityPack.dll</HintPath>
     </Reference>
+    <Reference Include="LightInject, Version=6.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\LightInject.6.4.0\lib\net46\LightInject.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Owin, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.3.0.0\lib\net45\Microsoft.Owin.dll</HintPath>
@@ -66,6 +69,10 @@
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
+    <Reference Include="System.IO" />
+    <Reference Include="System.Linq.Expressions" />
+    <Reference Include="System.Runtime" />
+    <Reference Include="System.Threading.Tasks" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -133,7 +140,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Blog.cs" />
+    <Compile Include="LightInject.Web\LightInject.Web.cs" />
+    <Compile Include="LightInject\LightInject.cs" />
+    <Compile Include="LightInject\Mvc\LightInject.Mvc.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -155,15 +164,24 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Blog.Data\BlogSite.Data.csproj">
       <Project>{4CA74BB6-8377-4797-AE7E-763A57E97984}</Project>
       <Name>BlogSite.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BlogSite.Service\BlogSite.Service.csproj">
+    <ProjectReference Include="..\BlogSite.Infrastructure\BlogSite.Infrastructure.csproj">
+      <Project>{db57f873-b138-4506-b7ee-d9e977a8e675}</Project>
+      <Name>BlogSite.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BlogSite.Service\BlogSite.Services.csproj">
       <Project>{4C57D7BA-708D-4553-9F81-8EED80449E82}</Project>
-      <Name>BlogSite.Service</Name>
+      <Name>BlogSite.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BlogSite.ViewModels\BlogSite.ViewModels.csproj">
+      <Project>{F6A947EB-CD00-4C4C-B0D6-EC9807B4BA7E}</Project>
+      <Name>BlogSite.ViewModels</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

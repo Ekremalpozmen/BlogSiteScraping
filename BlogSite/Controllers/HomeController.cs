@@ -1,12 +1,7 @@
-﻿using Blog.Data;
-using BlogSite.Models;
-using HtmlAgilityPack;
-using System;
-using System.Collections.Generic;
+﻿using BlogSite.Services.WebSite.HomePage;
+using BlogSite.ViewModels;
 using System.Linq;
-using System.Net;
-using System.Text;
-using System.Web;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace BlogSite.Controllers
@@ -14,33 +9,31 @@ namespace BlogSite.Controllers
     public class HomeController : Controller
     {
         // GET: Home
-        BlogEntities db = new BlogEntities();
+        private readonly HomePageService _homePageService;
+        public HomeController(HomePageService homePageService)
+        {
+            _homePageService = homePageService;
+        }
 
-        public ActionResult Index()
+
+        public async Task<ActionResult> Index(BlogModel model)
         {
-            var blog = db.Blogs.Select(x => new BlogModel()
-            {
-                Id = x.Id,
-                Description = x.Description,
-                ImageUrl = x.ImageUrl,
-                Title = x.Title,
-                Date = x.Date
-            }).ToList();
-            return View(blog);
+            var result = await _homePageService.GetProducts(model);
+            return View(result);
         }
-        public ActionResult BlogDetay(int id)
-        {
-            var blog = db.Blogs.Where(x => x.Id == id);
-            var blogdetay = db.Blogs.Where(x => x.Id == id).FirstOrDefault();
-            //var blogdetay = blog.Select(x => new BlogModel()
-            //{
-            //    Id=x.Id,
-            //    Description = x.Description,
-            //    ImageUrl = x.ImageUrl,
-            //    Title = x.Title,
-            //}).ToList();
-            return View(blogdetay);
-        }
+        //public ActionResult BlogDetay(int id)
+        //{
+        //    var blog = db.Blogs.Where(x => x.Id == id);
+        //    var blogdetay = db.Blogs.Where(x => x.Id == id).FirstOrDefault();
+        //    //var blogdetay = blog.Select(x => new BlogModel()
+        //    //{
+        //    //    Id=x.Id,
+        //    //    Description = x.Description,
+        //    //    ImageUrl = x.ImageUrl,
+        //    //    Title = x.Title,
+        //    //}).ToList();
+        //    return View(blogdetay);
+        //}
 
     }
 }
