@@ -15,25 +15,29 @@ namespace BlogSite.Controllers
             _homePageService = homePageService;
         }
 
-
         public async Task<ActionResult> Index(BlogModel model)
         {
-            var result = await _homePageService.GetProducts(model);
+            var result = await _homePageService.GetBlogs(model);
             return View(result);
         }
-        //public ActionResult BlogDetay(int id)
-        //{
-        //    var blog = db.Blogs.Where(x => x.Id == id);
-        //    var blogdetay = db.Blogs.Where(x => x.Id == id).FirstOrDefault();
-        //    //var blogdetay = blog.Select(x => new BlogModel()
-        //    //{
-        //    //    Id=x.Id,
-        //    //    Description = x.Description,
-        //    //    ImageUrl = x.ImageUrl,
-        //    //    Title = x.Title,
-        //    //}).ToList();
-        //    return View(blogdetay);
-        //}
+
+        public PartialViewResult TrendingBlogs(BlogModel model)
+        {
+            var result = _homePageService.TrendingBlogs(model);
+            return PartialView(result);
+        }
+        public PartialViewResult PopularBlogs(BlogModel model)
+        {
+            var result = _homePageService.TrendingBlogs(model);
+            return PartialView(result);
+        }
+
+
+        public async Task<ActionResult> BlogDetail(BlogModel model, int id)
+        {
+            var result = await _homePageService.BlogDetail(model, id);
+            return View(result.FirstOrDefault());
+        }
 
     }
 }

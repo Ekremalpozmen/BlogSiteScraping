@@ -1,0 +1,51 @@
+﻿
+@model List<BlogSite.ViewModels.BlogModel>
+
+<section class="bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="wrapp__list__article-responsive wrapp__list__article-responsive-carousel">
+                    @foreach (var item in Model)
+                    {
+        <div class="item">
+            <!-- Post Article -->
+            <div class="card__post card__post-list">
+                <div class="image-sm">
+                    <a href="@Url.Action("BlogDetail",  new { id = item.Id })">
+                        <img src="@item.ImageUrl" class="img-fluid" alt="">
+                    </a>
+                </div>
+                <div class="card__post__body ">
+                    <div class="card__post__content">
+
+                        <div class="card__post__author-info mb-2">
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <span class="text-primary">
+                                        Ekrem Özmen
+                                    </span>
+                                </li>
+                                <li class="list-inline-item">
+                                    <span class="text-dark text-capitalize">
+                                        @item.Date.Value.ToString("d")
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card__post__title">
+                            <h6>
+                                <a href="@Url.Action("BlogDetail",  new { id = item.Id })">
+                                    @Html.Raw(item.Title)
+                                </a>
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -12,17 +12,10 @@ namespace Blog.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class Blogs
+    public partial class Server
     {
-        public int Id { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public string ImageUrl { get; set; }
-        public string BlogUrl { get; set; }
-        public Nullable<System.DateTime> Date { get; set; }
-        public Nullable<int> CategoryId { get; set; }
-        public Nullable<int> BlogClick { get; set; }
-    
-        public virtual Category Category { get; set; }
+        public string Id { get; set; }
+        public string Data { get; set; }
+        public System.DateTime LastHeartbeat { get; set; }
     }
 }

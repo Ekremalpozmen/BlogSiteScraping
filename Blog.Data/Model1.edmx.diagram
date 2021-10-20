@@ -4,9 +4,25 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="69c5cb6ea1e74693bded761add2461df" Name="Diagram1">
-        <EntityTypeShape EntityType="BlogModel.Blogs" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="BlogModel.Bloggers" Width="1.5" PointX="3.375" PointY="0.75" />
+      <Diagram DiagramId="16410e540799417b8b4ea2d732524bcc" Name="Diagram1">
+        <EntityTypeShape EntityType="BlogModel.Bloggers" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogModel.Blogs" Width="1.5" PointX="8" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogModel.Category" Width="1.5" PointX="5.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogModel.AggregatedCounter" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogModel.Hash" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogModel.Job" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogModel.JobParameter" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogModel.JobQueue" Width="1.5" PointX="4.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogModel.List" Width="1.5" PointX="6.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogModel.Schema" Width="1.5" PointX="8.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogModel.Server" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogModel.Set" Width="1.5" PointX="9.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogModel.State" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogModel.Counter" Width="1.5" PointX="8.75" PointY="9.75" IsExpanded="true" />
+        <AssociationConnector Association="BlogModel.FK_Blogs_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="BlogModel.FK_HangFire_JobParameter_Job" ManuallyRouted="false" />
+        <AssociationConnector Association="BlogModel.FK_HangFire_State_Job" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
