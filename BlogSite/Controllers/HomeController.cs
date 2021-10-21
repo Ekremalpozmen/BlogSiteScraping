@@ -21,17 +21,16 @@ namespace BlogSite.Controllers
             return View(result);
         }
 
-        public PartialViewResult TrendingBlogs(BlogModel model)
+        public PartialViewResult RandomBlogs(BlogModel model)
         {
-            var result = _homePageService.TrendingBlogs(model);
+            var result = _homePageService.RandomBlogs(model);
             return PartialView(result);
         }
-        public PartialViewResult PopularBlogs(BlogModel model)
+        public PartialViewResult LastBlogs(BlogModel model)
         {
-            var result = _homePageService.TrendingBlogs(model);
+            var result = _homePageService.LastBlogs(model);
             return PartialView(result);
         }
-
 
         public async Task<ActionResult> BlogDetail(BlogModel model, int id)
         {

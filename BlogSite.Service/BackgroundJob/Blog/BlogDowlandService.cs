@@ -93,7 +93,8 @@ namespace BlogSite.Services.BackgroundJob.Blog
                                     ImageUrl = blogImage,
                                     BlogUrl = blogUrl,
                                     Date = DateTime.Now,
-                                    CategoryId = dbCategory.CategoryId
+                                    CategoryId = dbCategory.CategoryId,
+                                    BlogClick = 0
                                 };
                                 db.Blogs.Add(blog);
                                 db.SaveChanges();
@@ -170,7 +171,8 @@ namespace BlogSite.Services.BackgroundJob.Blog
                                     ImageUrl = blogImage,
                                     BlogUrl = blogUrl,
                                     Date = DateTime.Now,
-                                    CategoryId = dbCategory.CategoryId
+                                    CategoryId = dbCategory.CategoryId,
+                                    BlogClick = 0
                                 };
                                 db.Blogs.Add(blog);
                                 db.SaveChanges();

@@ -161,8 +161,8 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_NavBar.cshtml" />
     <Content Include="Views\Home\BlogDetail.cshtml" />
-    <Content Include="Views\Home\TrendingBlogs.cshtml" />
-    <Content Include="Views\Home\PopularBlogs.cshtml" />
+    <Content Include="Views\Home\RandomBlogs.cshtml" />
+    <Content Include="Views\Home\LastBlogs.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
