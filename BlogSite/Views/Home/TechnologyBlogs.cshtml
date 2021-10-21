@@ -14,7 +14,7 @@
         <!-- Post Article -->
         <div class="article__entry">
             <div class="article__image">
-                <a href="#">
+                <a href="@Url.Action("BlogDetail",  new { id = item.Id })">
                     <img src="@item.ImageUrl" alt="@item.Title" class="img-fluid">
                 </a>
             </div>
@@ -33,7 +33,7 @@
 
                 </ul>
                 <h5>
-                    <a href="#">
+                    <a href="@Url.Action("BlogDetail",  new { id = item.Id })">
                         @Html.Raw(item.Title)
                     </a>
                 </h5>
