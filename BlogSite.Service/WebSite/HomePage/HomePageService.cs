@@ -99,8 +99,27 @@ namespace BlogSite.Services.WebSite.HomePage
                                    ,[BlogClick]
                                     FROM [Blog].[dbo].[Blogs] B 
 	                                INNER JOIN [Blog].[dbo].[Category] bc ON B.CategoryId=bc.CategoryId  order by b.BlogClick desc";
-                var lastBlogs = (db.Query<BlogModel>(_sql)).ToList();
-                return lastBlogs;
+                var popularBlogs = (db.Query<BlogModel>(_sql)).ToList();
+                return popularBlogs;
+            }
+        }
+        public List<BlogModel> TechnologyBlogs()
+        {
+            using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BlogSiteConnectionString"].ConnectionString))
+            {
+                string _sql = @"    SELECT  TOP 8 [Id]
+                                   ,[Title]
+                                   ,[Description]
+                                   ,[ImageUrl]
+                                   ,[BlogUrl]
+                                   ,[Date]
+	                               ,b.CategoryId
+	                               ,bc.CategoryName
+                                   ,[BlogClick]
+                                    FROM [Blog].[dbo].[Blogs] B 
+	                                INNER JOIN [Blog].[dbo].[Category] bc ON B.CategoryId=bc.CategoryId where b.CategoryId=1 order by NEWID()";
+                var technologyBlogs = (db.Query<BlogModel>(_sql)).ToList();
+                return technologyBlogs;
             }
         }
 

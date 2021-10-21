@@ -1,0 +1,46 @@
+﻿@model List<BlogSite.ViewModels.BlogModel>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <aside class="wrapper__list__article">
+                <h4 class="border_section">Teknoloji</h4>
+            </aside>
+        </div>
+        <div class="col-md-12">
+            <div class="article__entry-carousel">
+                @foreach (var item in Model)
+                {
+    <div class="item">
+        <!-- Post Article -->
+        <div class="article__entry">
+            <div class="article__image">
+                <a href="#">
+                    <img src="@item.ImageUrl" alt="@item.Title" class="img-fluid">
+                </a>
+            </div>
+            <div class="article__content">
+                <ul class="list-inline">
+                    <li class="list-inline-item">
+                        <span class="text-primary">
+                            Ekrem Özmen
+                        </span>
+                    </li>
+                    <li class="list-inline-item">
+                        <span>
+                            @item.Date.Value.ToString("d")
+                        </span>
+                    </li>
+
+                </ul>
+                <h5>
+                    <a href="#">
+                        @Html.Raw(item.Title)
+                    </a>
+                </h5>
+            </div>
+        </div>
+    </div>}
+            </div>
+        </div>
+    </div>
+</div>

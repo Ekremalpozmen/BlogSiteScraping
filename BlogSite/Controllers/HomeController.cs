@@ -36,6 +36,11 @@ namespace BlogSite.Controllers
             var result = _homePageService.PopularBlogs();
             return PartialView(result);
         }
+        public PartialViewResult TechnologyBlogs()
+        {
+            var result = _homePageService.TechnologyBlogs();
+            return PartialView(result);
+        }
 
         public async Task<ActionResult> BlogDetail(BlogModel model, int id)
         {
