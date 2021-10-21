@@ -1,0 +1,161 @@
+﻿@model List<BlogSite.ViewModels.BlogModel>
+
+<div class="popular__section-news">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-8">
+                <div class="wrapper__list__article">
+                    <h4 class="border_section">Popüler Postlar</h4>
+                </div>
+                <div class="row ">
+                    @foreach (var item in Model.Take(2))
+                    {
+        <div class="col-sm-12 col-md-6 mb-4">
+            <!-- Post Article -->
+            <div class="card__post ">
+                <div class="card__post__body card__post__transition">
+                    <a href="./card-article-detail-v1.html">
+                        <img src="@item.ImageUrl" class="img-fluid" alt="@item.Title">
+                    </a>
+                    <div class="card__post__content bg__post-cover">
+                        <div class="card__post__category">
+                            @item.CategoryName
+                        </div>
+                        <div class="card__post__title">
+                            <h5>
+                                <a href="./card-article-detail-v1.html">
+                                    @Html.Raw(item.Title)
+                                </a>
+                            </h5>
+                        </div>
+                        <div class="card__post__author-info">
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <a href="./card-article-detail-v1.html">
+                                        Ekrem Özmen
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <span>
+                                        @item.Date.Value.ToString("d")
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>}
+                </div>
+                <div class="row ">
+                    <div class="col-sm-12 col-md-6">
+                        <div class="wrapp__list__article-responsive">
+                            @foreach (var item in Model.Skip(2).Take(2))
+                            {
+                <div class="mb-3">
+                    <!-- Post Article -->
+                    <div class="card__post card__post-list">
+                        <div class="image-sm">
+                            <a href="./card-article-detail-v1.html">
+                                <img src="@item.ImageUrl" class="img-fluid" alt="@item.Title">
+                            </a>
+                        </div>
+                        <div class="card__post__body ">
+                            <div class="card__post__content">
+                                <div class="card__post__author-info mb-2">
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item">
+                                            <span class="text-primary">
+                                                Ekrem Özmen
+                                            </span>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <span class="text-dark text-capitalize">
+                                                @item.Date.Value.ToString("d")
+                                            </span>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                                <div class="card__post__title">
+                                    <h6>
+                                        <a href="./card-article-detail-v1.html">
+                                            @Html.Raw(item.Title)
+                                        </a>
+                                    </h6>
+                                    <!-- <p class="d-none d-lg-block d-xl-block">
+                                        Maecenas accumsan tortor ut velit pharetra mollis. Proin eu nisl et arcu iaculis placerat
+                                        sollicitudin ut est. In fringilla dui dui.
+                                    </p> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>}
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6 ">
+                        <div class="wrapp__list__article-responsive">
+                            @foreach (var item in Model.Skip(4).Take(2))
+                            {
+                <div class="mb-3">
+                    <!-- Post Article -->
+                    <div class="card__post card__post-list">
+                        <div class="image-sm">
+                            <a href="./card-article-detail-v1.html">
+                                <img src="@item.ImageUrl" class="img-fluid" alt="@item.Title">
+                            </a>
+                        </div>
+                        <div class="card__post__body ">
+                            <div class="card__post__content">
+                                <div class="card__post__author-info mb-2">
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item">
+                                            <span class="text-primary">
+                                                Ekrem Özmen
+                                            </span>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <span class="text-dark text-capitalize">
+                                                @item.Date.Value.ToString("d")
+                                            </span>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                                <div class="card__post__title">
+                                    <h6>
+                                        <a href="./card-article-detail-v1.html">
+                                            @Html.Raw(item.Title)
+                                        </a>
+                                    </h6>
+                                    <!-- <p class="d-none d-lg-block d-xl-block">
+                                        Maecenas accumsan tortor ut velit pharetra mollis. Proin eu nisl et arcu iaculis placerat
+                                        sollicitudin ut est. In fringilla dui dui.
+                                    </p> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12 col-lg-4">
+                <aside class="wrapper__list__article">
+                    <aside class="wrapper__list__article">
+                        <h4 class="border_section">Reklam</h4>
+                        <a href="#">
+                            <figure>
+                                <img src="~/images/placeholder/800x600.jpg" alt="" class="img-fluid">
+                            </figure>
+                        </a>
+                    </aside>
+                </aside>
+            </div>
+        </div>
+    </div>
+</div>

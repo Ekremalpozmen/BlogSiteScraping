@@ -48,7 +48,7 @@ namespace BlogSite.Services.WebSite.HomePage
             }).ToListAsync().ConfigureAwait(false));
         }
 
-        public List<BlogModel> RandomBlogs(BlogModel model)
+        public List<BlogModel> RandomBlogs()
         {
             using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BlogSiteConnectionString"].ConnectionString))
             {
@@ -65,7 +65,7 @@ namespace BlogSite.Services.WebSite.HomePage
                 return randomBlogs;
             }
         }
-        public List<BlogModel> LastBlogs(BlogModel model)
+        public List<BlogModel> LastBlogs()
         {
             using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BlogSiteConnectionString"].ConnectionString))
             {
@@ -79,9 +79,28 @@ namespace BlogSite.Services.WebSite.HomePage
 	                               ,bc.CategoryName
                                    ,[BlogClick]
                                     FROM [Blog].[dbo].[Blogs] B 
-	                               INNER JOIN [Blog].[dbo].[Category] bc ON B.CategoryId=bc.CategoryId ORDER BY Id desc";
-                var popularBlogs = (db.Query<BlogModel>(_sql)).ToList();
-                return popularBlogs;
+	                                INNER JOIN [Blog].[dbo].[Category] bc ON B.CategoryId=bc.CategoryId ORDER BY Id desc";
+                var lastBlogs = (db.Query<BlogModel>(_sql)).ToList();
+                return lastBlogs;
+            }
+        }
+        public List<BlogModel> PopularBlogs()
+        {
+            using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["BlogSiteConnectionString"].ConnectionString))
+            {
+                string _sql = @"    SELECT TOP 6 [Id]
+                                   ,[Title]
+                                   ,[Description]
+                                   ,[ImageUrl]
+                                   ,[BlogUrl]
+                                   ,[Date]
+	                               ,b.CategoryId
+	                               ,bc.CategoryName
+                                   ,[BlogClick]
+                                    FROM [Blog].[dbo].[Blogs] B 
+	                                INNER JOIN [Blog].[dbo].[Category] bc ON B.CategoryId=bc.CategoryId  order by b.BlogClick desc";
+                var lastBlogs = (db.Query<BlogModel>(_sql)).ToList();
+                return lastBlogs;
             }
         }
 

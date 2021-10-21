@@ -21,14 +21,19 @@ namespace BlogSite.Controllers
             return View(result);
         }
 
-        public PartialViewResult RandomBlogs(BlogModel model)
+        public PartialViewResult RandomBlogs()
         {
-            var result = _homePageService.RandomBlogs(model);
+            var result = _homePageService.RandomBlogs();
             return PartialView(result);
         }
-        public PartialViewResult LastBlogs(BlogModel model)
+        public PartialViewResult LastBlogs()
         {
-            var result = _homePageService.LastBlogs(model);
+            var result = _homePageService.LastBlogs();
+            return PartialView(result);
+        }
+        public PartialViewResult PopularBlogs()
+        {
+            var result = _homePageService.PopularBlogs();
             return PartialView(result);
         }
 
@@ -37,6 +42,8 @@ namespace BlogSite.Controllers
             var result = await _homePageService.BlogDetail(model, id);
             return View(result.FirstOrDefault());
         }
+
+
 
     }
 }

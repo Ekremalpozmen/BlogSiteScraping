@@ -163,6 +163,7 @@
     <Content Include="Views\Home\BlogDetail.cshtml" />
     <Content Include="Views\Home\RandomBlogs.cshtml" />
     <Content Include="Views\Home\LastBlogs.cshtml" />
+    <Content Include="Views\Home\PopularBlogs.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
