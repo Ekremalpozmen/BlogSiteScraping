@@ -5,11 +5,10 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
-using System.Threading;
 using Blog.Data;
+using BlogSite.Utils.Helpers;
 using Hangfire;
 using HtmlAgilityPack;
-using Newtonsoft.Json;
 
 
 namespace BlogSite.Services.BackgroundJob.Blog
@@ -94,7 +93,8 @@ namespace BlogSite.Services.BackgroundJob.Blog
                                     BlogUrl = blogUrl,
                                     Date = DateTime.Now,
                                     CategoryId = dbCategory.CategoryId,
-                                    BlogClick = 0
+                                    BlogClick = 0,
+                                    Link = HelperMethods.UrlFriendly(blogTitle)
                                 };
                                 db.Blogs.Add(blog);
                                 db.SaveChanges();
@@ -172,7 +172,8 @@ namespace BlogSite.Services.BackgroundJob.Blog
                                     BlogUrl = blogUrl,
                                     Date = DateTime.Now,
                                     CategoryId = dbCategory.CategoryId,
-                                    BlogClick = 0
+                                    BlogClick = 0,
+                                    Link = HelperMethods.UrlFriendly(blogTitle)
                                 };
                                 db.Blogs.Add(blog);
                                 db.SaveChanges();

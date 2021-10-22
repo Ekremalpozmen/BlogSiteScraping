@@ -80,6 +80,10 @@
       <Project>{4CA74BB6-8377-4797-AE7E-763A57E97984}</Project>
       <Name>BlogSite.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BlogSite.Utils\BlogSite.Utils.csproj">
+      <Project>{96AD2BC4-E1BD-47C8-B826-C3076B8FFCDB}</Project>
+      <Name>BlogSite.Utils</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BlogSite.ViewModels\BlogSite.ViewModels.csproj">
       <Project>{f6a947eb-cd00-4c4c-b0d6-ec9807b4ba7e}</Project>
       <Name>BlogSite.ViewModels</Name>

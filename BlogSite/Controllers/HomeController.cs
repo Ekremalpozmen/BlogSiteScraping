@@ -42,13 +42,10 @@ namespace BlogSite.Controllers
             return PartialView(result);
         }
 
-        public async Task<ActionResult> BlogDetail(BlogModel model, int id)
+        public ActionResult BlogDetail(string link)
         {
-            var result = await _homePageService.BlogDetail(model, id);
-            return View(result.FirstOrDefault());
+            var result = _homePageService.BlogDetail(link);
+            return View(result);
         }
-
-
-
     }
 }

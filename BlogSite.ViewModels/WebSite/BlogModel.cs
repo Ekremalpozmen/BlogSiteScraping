@@ -15,6 +15,7 @@ namespace BlogSite.ViewModels
         public DateTime? Date { get; set; }
         public int? BlogClick { get; set; }
         public string CategoryName { get; set; }
+        public string Link { get; set; }
 
     }
 }

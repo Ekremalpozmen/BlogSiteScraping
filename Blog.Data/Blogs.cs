@@ -22,6 +22,7 @@ namespace Blog.Data
         public Nullable<System.DateTime> Date { get; set; }
         public Nullable<int> CategoryId { get; set; }
         public Nullable<int> BlogClick { get; set; }
+        public string Link { get; set; }
     
         public virtual Category Category { get; set; }
     }

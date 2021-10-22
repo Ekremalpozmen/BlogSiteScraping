@@ -24,6 +24,7 @@
           <Property Name="Date" Type="datetime" />
           <Property Name="CategoryId" Type="int" />
           <Property Name="BlogClick" Type="int" />
+          <Property Name="Link" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
@@ -247,6 +248,7 @@ warning 6002: The table/view 'Blog.HangFire.Counter' does not have a primary key
           <Property Name="CategoryId" Type="Int32" />
           <NavigationProperty Name="Category" Relationship="Self.FK_Blogs_Category" FromRole="Blogs" ToRole="Category" />
           <Property Name="BlogClick" Type="Int32" />
+          <Property Name="Link" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
@@ -460,6 +462,7 @@ warning 6002: The table/view 'Blog.HangFire.Counter' does not have a primary key
           <EntitySetMapping Name="Blogs">
             <EntityTypeMapping TypeName="BlogModel.Blogs">
               <MappingFragment StoreEntitySet="Blogs">
+                <ScalarProperty Name="Link" ColumnName="Link" />
                 <ScalarProperty Name="BlogClick" ColumnName="BlogClick" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Title" ColumnName="Title" />

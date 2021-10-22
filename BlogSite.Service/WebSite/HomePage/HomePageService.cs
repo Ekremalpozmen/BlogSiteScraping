@@ -31,21 +31,24 @@ namespace BlogSite.Services.WebSite.HomePage
                               Date = x.Date
                           }).Take(6).ToListAsync().ConfigureAwait(false);
         }
-        public async Task<List<BlogModel>> BlogDetail(BlogModel model, int id)
+        public BlogModel BlogDetail(string link)
         {
-            var blog = _context.Blogs.Where(x => x.Id == id);
-            var blogdetay = _context.Blogs.Where(x => x.Id == id).FirstOrDefault();
-            blogdetay.BlogClick = blogdetay.BlogClick + 1;
+            var blog = _context.Blogs.Where(x => x.Link == link);
+            var blogdetay = _context.Blogs.Where(x => x.Link == link).FirstOrDefault();
+            blogdetay.BlogClick += 1;
             _context.SaveChanges();
-            return await (blog.Select(x => new BlogModel()
-            {
-                Id = x.Id,
-                Description = x.Description,
-                ImageUrl = x.ImageUrl,
-                Title = x.Title,
-                BlogClick = (int)blogdetay.BlogClick,
-                Date = x.Date
-            }).ToListAsync().ConfigureAwait(false));
+            return (from x in _context.Blogs
+                    where x.Link == link
+                    select new BlogModel()
+                    {
+                        Id = x.Id,
+                        Description = x.Description,
+                        ImageUrl = x.ImageUrl,
+                        Title = x.Title,
+                        BlogClick = (int)blogdetay.BlogClick,
+                        Date = x.Date,
+                        Link = x.Link
+                    }).FirstOrDefault();
         }
 
         public List<BlogModel> RandomBlogs()
@@ -60,7 +63,7 @@ namespace BlogSite.Services.WebSite.HomePage
                                   ,[Date]
                                   ,[CategoryId]
                                   ,[BlogClick]
-                                  FROM [Blog].[dbo].[Blogs] ORDER BY NEWID()";
+                                  FROM [dbo].[Blogs] ORDER BY NEWID()";
                 var randomBlogs = (db.Query<BlogModel>(_sql)).ToList();
                 return randomBlogs;
             }
@@ -78,8 +81,9 @@ namespace BlogSite.Services.WebSite.HomePage
 	                               ,b.CategoryId
 	                               ,bc.CategoryName
                                    ,[BlogClick]
-                                    FROM [Blog].[dbo].[Blogs] B 
-	                                INNER JOIN [Blog].[dbo].[Category] bc ON B.CategoryId=bc.CategoryId ORDER BY Id desc";
+                                   ,[Link]
+                                    FROM [dbo].[Blogs] B 
+	                                INNER JOIN [dbo].[Category] bc ON B.CategoryId=bc.CategoryId ORDER BY Id desc";
                 var lastBlogs = (db.Query<BlogModel>(_sql)).ToList();
                 return lastBlogs;
             }
@@ -97,8 +101,8 @@ namespace BlogSite.Services.WebSite.HomePage
 	                               ,b.CategoryId
 	                               ,bc.CategoryName
                                    ,[BlogClick]
-                                    FROM [Blog].[dbo].[Blogs] B 
-	                                INNER JOIN [Blog].[dbo].[Category] bc ON B.CategoryId=bc.CategoryId  order by b.BlogClick desc";
+                                    FROM [dbo].[Blogs] B 
+	                                INNER JOIN [dbo].[Category] bc ON B.CategoryId=bc.CategoryId  order by b.BlogClick desc";
                 var popularBlogs = (db.Query<BlogModel>(_sql)).ToList();
                 return popularBlogs;
             }
@@ -116,12 +120,11 @@ namespace BlogSite.Services.WebSite.HomePage
 	                               ,b.CategoryId
 	                               ,bc.CategoryName
                                    ,[BlogClick]
-                                    FROM [Blog].[dbo].[Blogs] B 
-	                                INNER JOIN [Blog].[dbo].[Category] bc ON B.CategoryId=bc.CategoryId where b.CategoryId=1 order by NEWID()";
+                                    FROM [dbo].[Blogs] B 
+	                                INNER JOIN [dbo].[Category] bc ON B.CategoryId=bc.CategoryId where b.CategoryId=1 order by NEWID()";
                 var technologyBlogs = (db.Query<BlogModel>(_sql)).ToList();
                 return technologyBlogs;
             }
         }
-
     }
 }
