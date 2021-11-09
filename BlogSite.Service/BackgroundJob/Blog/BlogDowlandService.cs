@@ -31,11 +31,15 @@ namespace BlogSite.Services.BackgroundJob.Blog
         {
             if (bloggersUrl.Contains("www.aorhan.com"))
             {
-                AOrhan(bloggersUrl);
+                //      AOrhan(bloggersUrl);
             }
             if (bloggersUrl.Contains("www.hduman.com"))
             {
-                HDuman(bloggersUrl);
+                //  HDuman(bloggersUrl);
+            }
+            if (bloggersUrl.Contains("www.fundalina.com"))
+            {
+                Fundalina(bloggersUrl);
             }
         }
 
@@ -196,5 +200,87 @@ namespace BlogSite.Services.BackgroundJob.Blog
                 return;
             }
         }
+
+        private static void Fundalina(string bloggersUrl)
+        {
+
+            try
+            {
+                Uri url = new Uri(bloggersUrl);
+                WebClient client = new WebClient();
+                client.Headers.Add("Accept: text/html, application/xhtml+xml, */*");
+                client.Headers.Add(
+                    "User-Agent: Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)");
+                client.Encoding = Encoding.UTF8;
+                ServicePointManager.Expect100Continue = true;
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+                string html = client.DownloadString(url);
+                HtmlDocument document = new HtmlDocument();
+                document.LoadHtml(html);
+                var blogList = document.DocumentNode.Descendants().Where(x => x.HasClass("span9")).FirstOrDefault();
+                var blogUrlList = blogList.SelectNodes("//article").ToList();
+
+                foreach (var item in blogUrlList)
+                {
+                    var blogImage = item.SelectSingleNode(".//img").Attributes["data-original"].Value;
+                    var blogUrl = item.SelectSingleNode(".//a[@href]").Attributes["href"].Value;
+                    Uri urls = new Uri(blogUrl);
+                    WebClient clients = new WebClient();
+                    clients.Headers.Add("Accept: text/html, application/xhtml+xml, */*");
+                    clients.Headers.Add(
+                        "User-Agent: Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)");
+                    clients.Encoding = Encoding.UTF8;
+                    ServicePointManager.Expect100Continue = true;
+                    ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+                    string htmls = clients.DownloadString(urls);
+                    HtmlDocument documents = new HtmlDocument();
+                    documents.LoadHtml(htmls);
+                    using (BlogEntities db = new BlogEntities())
+                    {
+                        var blogTitle = documents.DocumentNode.Descendants()?.FirstOrDefault(n => n.HasClass("entry-title"))?.InnerText;
+                        var blogDescription = documents.DocumentNode.Descendants()?.Where(n => n.HasClass("entry-content")).FirstOrDefault()?.OuterHtml.Replace("data-src", "src"); ;
+                        var lastCategoryText = documents.DocumentNode.SelectSingleNode("/html/body/div/div/div/div/article/div[2]/div/div/ul/li[2]/a").InnerText.Trim();
+                        var lastCategory = (lastCategoryText == "Dijital Dünya") ? "Teknoloji Haberleri" : lastCategoryText;
+                        var dbCategory = db.Category.FirstOrDefault(x => x.CategoryName == lastCategory);
+
+                        if (dbCategory != null)
+                        {
+                            var blog = db.Blogs.FirstOrDefault(x => x.BlogUrl == blogUrl);
+                            if (blog == null)
+                            {
+                                blog = new Blogs
+                                {
+                                    Title = blogTitle,
+                                    Description = blogDescription,
+                                    ImageUrl = blogImage,
+                                    BlogUrl = blogUrl,
+                                    Date = DateTime.Now,
+                                    CategoryId = dbCategory.CategoryId,
+                                    BlogClick = 0,
+                                    Link = HelperMethods.UrlFriendly(blogTitle)
+                                };
+                                db.Blogs.Add(blog);
+                                db.SaveChanges();
+                            }
+                        }
+                        else
+                        {
+                            var category = new Category
+                            {
+                                CategoryName = lastCategory
+                            };
+                            db.Category.Add(category);
+                            db.SaveChanges();
+                        }
+
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                return;
+            }
+        }
+
     }
 }

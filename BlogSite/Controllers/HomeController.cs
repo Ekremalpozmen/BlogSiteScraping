@@ -1,4 +1,5 @@
-﻿using BlogSite.Services.WebSite.HomePage;
+﻿using BlogSite.Controllers.Abstract;
+using BlogSite.Services.WebSite.HomePage;
 using BlogSite.ViewModels;
 using System.Linq;
 using System.Threading.Tasks;
@@ -6,7 +7,7 @@ using System.Web.Mvc;
 
 namespace BlogSite.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         // GET: Home
         private readonly HomePageService _homePageService;
@@ -42,9 +43,9 @@ namespace BlogSite.Controllers
             return PartialView(result);
         }
 
-        public ActionResult BlogDetail(string link)
+        public ActionResult BlogDetail(int id)
         {
-            var result = _homePageService.BlogDetail(link);
+            var result = _homePageService.BlogDetail(id);
             return View(result);
         }
     }

@@ -31,14 +31,14 @@ namespace BlogSite.Services.WebSite.HomePage
                               Date = x.Date
                           }).Take(6).ToListAsync().ConfigureAwait(false);
         }
-        public BlogModel BlogDetail(string link)
+        public BlogModel BlogDetail(int id)
         {
-            var blog = _context.Blogs.Where(x => x.Link == link);
-            var blogdetay = _context.Blogs.Where(x => x.Link == link).FirstOrDefault();
+            var blog = _context.Blogs.Where(x => x.Id== id);
+            var blogdetay = _context.Blogs.Where(x => x.Id == id).FirstOrDefault();
             blogdetay.BlogClick += 1;
             _context.SaveChanges();
             return (from x in _context.Blogs
-                    where x.Link == link
+                    where x.Id== id
                     select new BlogModel()
                     {
                         Id = x.Id,
