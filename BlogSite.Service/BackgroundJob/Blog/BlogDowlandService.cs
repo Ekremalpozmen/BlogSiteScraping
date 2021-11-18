@@ -31,11 +31,11 @@ namespace BlogSite.Services.BackgroundJob.Blog
         {
             if (bloggersUrl.Contains("www.aorhan.com"))
             {
-                //      AOrhan(bloggersUrl);
+                AOrhan(bloggersUrl);
             }
             if (bloggersUrl.Contains("www.hduman.com"))
             {
-                //  HDuman(bloggersUrl);
+                HDuman(bloggersUrl);
             }
             if (bloggersUrl.Contains("www.fundalina.com"))
             {
