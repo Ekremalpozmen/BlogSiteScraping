@@ -1,6 +1,9 @@
-﻿using BlogSite.Controllers.Abstract;
+﻿using Blog.Data;
+using BlogSite.Controllers.Abstract;
 using BlogSite.Services.WebSite.HomePage;
 using BlogSite.ViewModels;
+using BlogSite.ViewModels.WebSite;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -11,9 +14,20 @@ namespace BlogSite.Controllers
     {
         // GET: Home
         private readonly HomePageService _homePageService;
-        public HomeController(HomePageService homePageService)
+        private readonly BlogEntities _context;
+
+        public HomeController(HomePageService homePageService, BlogEntities context)
         {
             _homePageService = homePageService;
+            _context = context;
+        }
+
+        public PartialViewResult CategoryList()
+        {
+            List<Category> categories = _context.Category.ToList();
+            ViewBag.Categories = categories;
+            return PartialView();
+
         }
 
         public async Task<ActionResult> Index(BlogModel model)

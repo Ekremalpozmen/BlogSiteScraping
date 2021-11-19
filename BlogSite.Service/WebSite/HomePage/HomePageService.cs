@@ -31,14 +31,27 @@ namespace BlogSite.Services.WebSite.HomePage
                               Date = x.Date
                           }).Take(6).ToListAsync().ConfigureAwait(false);
         }
+
+        //public List<CategoryModel> GetCategoryList()
+        //{
+        //    var categories = (from x in _context.Category
+        //                      select new Category()
+        //                      {
+        //                          CategoryId = x.CategoryId,
+        //                          CategoryName = x.CategoryName,
+        //                      }).ToList();
+        //    return categories;
+        //}
+
+
         public BlogModel BlogDetail(int id)
         {
-            var blog = _context.Blogs.Where(x => x.Id== id);
+            var blog = _context.Blogs.Where(x => x.Id == id);
             var blogdetay = _context.Blogs.Where(x => x.Id == id).FirstOrDefault();
             blogdetay.BlogClick += 1;
             _context.SaveChanges();
             return (from x in _context.Blogs
-                    where x.Id== id
+                    where x.Id == id
                     select new BlogModel()
                     {
                         Id = x.Id,
