@@ -69,6 +69,7 @@
   <ItemGroup>
     <Compile Include="BackgroundJob\Blog\BlogDowlandService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebSite\Category\CategoryBlogsService.cs" />
     <Compile Include="WebSite\HomePage\HomePageService.cs" />
   </ItemGroup>
   <ItemGroup>

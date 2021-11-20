@@ -1,6 +1,6 @@
 ﻿@foreach (var item in ViewBag.Categories)
 {
     <li>
-        <a class="dropdown-item icon-arrow" href="#">  @item.CategoryName </a>
+        <a class="dropdown-item icon-arrow" href="@(Url.Action("CategoryBlogs","CategoryBlogs",new { id = item.CategoryId }))">  @item.CategoryName </a>
     </li>
 }

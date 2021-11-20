@@ -142,6 +142,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\Abstract\BaseController.cs" />
+    <Compile Include="Controllers\CategoryBlogsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Filters\HangFireAuthorizationFilter.cs" />
     <Compile Include="Global.asax.cs">
@@ -167,6 +168,7 @@
     <Content Include="Views\Home\PopularBlogs.cshtml" />
     <Content Include="Views\Home\TechnologyBlogs.cshtml" />
     <Content Include="Views\Shared\CategoryList.cshtml" />
+    <Content Include="Views\CategoryBlogs\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,9 +1,6 @@
 using Blog.Data;
 using BlogSite.LightInject;
 using BlogSite.LightInject.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
@@ -24,6 +21,8 @@ namespace BlogSite
             System.Net.ServicePointManager.SecurityProtocol |=
                 SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
             container.Register(typeof(BlogSite.Services.WebSite.HomePage.HomePageService), new PerRequestLifeTime());
+            container.Register(typeof(BlogSite.Service.WebSite.Category.CategoryBlogsService), new PerRequestLifeTime());
+
             container.EnableMvc();
         }
     }
