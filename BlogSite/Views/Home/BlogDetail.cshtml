@@ -1,5 +1,6 @@
 ﻿
 @{ Layout = "~/Views/Shared/_Layout.cshtml"; }
+<title>@Html.Raw(Model.Title)</title>
 
 <section class="bg-white pb-60">
     <div class="container">
@@ -112,23 +113,15 @@
 
                         <!-- Blockquote  -->
                         <blockquote class="block-quote">
+                            <h5>Orjinal Blog</h5>
                             <p>
-                                It is a long established fact that a reader will be distracted by the readable content of a page when looking at
-                                its layout.
+                                <a target="_blank" href="@Model.BlogUrl">@Model.BlogUrl</a>
                             </p>
-                            <cite>
-                                Tom Cruise
-                            </cite>
                         </blockquote>
                         <!-- Blockquote -->
 
 
-                        <h5>How Tech Startup Survive Without Funding</h5>
-                        <p>
-                            Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the
-                            blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language
-                            ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia.
-                        </p>
+
 
 
 
@@ -172,49 +165,6 @@
                 </div>
 
 
-                <!-- Profile author -->
-                <div class="wrap__profile">
-                    <div class="wrap__profile-author">
-                        <figure>
-                            <img src="images/placeholder/80x80.jpg" alt="" class="img-fluid rounded-circle">
-                        </figure>
-                        <div class="wrap__profile-author-detail">
-                            <div class="wrap__profile-author-detail-name">author</div>
-                            <h4>jhon doe</h4>
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis laboriosam ad beatae itaque ea non
-                                placeat officia ipsum praesentium! Ullam?
-                            </p>
-                            <ul class="list-inline">
-                                <li class="list-inline-item">
-                                    <a href="#" class="btn btn-social btn-social-o facebook ">
-                                        <i class="fa fa-facebook"></i>
-                                    </a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="#" class="btn btn-social btn-social-o twitter ">
-                                        <i class="fa fa-twitter"></i>
-                                    </a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="#" class="btn btn-social btn-social-o instagram ">
-                                        <i class="fa fa-instagram"></i>
-                                    </a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="#" class="btn btn-social btn-social-o telegram ">
-                                        <i class="fa fa-telegram"></i>
-                                    </a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="#" class="btn btn-social btn-social-o linkedin ">
-                                        <i class="fa fa-linkedin"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
 
 
                 <!-- Comment  -->

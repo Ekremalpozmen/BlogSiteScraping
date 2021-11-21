@@ -15,8 +15,8 @@
                                 <!-- Post Article -->
                                 <div class="card__post">
                                     <div class="card__post__body">
-                                        <a href="@Url.Action("BlogDetail",  new { id = item.Id })">
-                                            <img src="@item.ImageUrl" class="img-fluid" alt="">
+                                        <a target="_blank" href="@Url.Action("BlogDetail",  new { id = item.Id })">
+                                            <img src="@item.ImageUrl" class="img-fluid" alt="@item.Title">
                                         </a>
                                         <div class="card__post__content bg__post-cover">
                                             <div class="card__post__category">
@@ -24,7 +24,7 @@
                                             </div>
                                             <div class="card__post__title">
                                                 <h2>
-                                                    <a href="@Url.Action("BlogDetail",  new { id = item.Id })">
+                                                    <a target="_blank" href="@Url.Action("BlogDetail",  new { id = item.Id })">
                                                         @Html.Raw(item.Title)
                                                     </a>
                                                 </h2>
@@ -32,7 +32,7 @@
                                             <div class="card__post__author-info">
                                                 <ul class="list-inline">
                                                     <li class="list-inline-item">
-                                                        <a href="@Url.Action("BlogDetail",  new { id = item.Id })">
+                                                        <a target="_blank" href="@Url.Action("BlogDetail",  new { id = item.Id })">
                                                             Ekrem Özmen
                                                         </a>
                                                     </li>
@@ -69,7 +69,7 @@
                         {
                             <div class="card__post ">
                                 <div class="card__post__body card__post__transition">
-                                    <a href="@Url.Action("BlogDetail",  new { id = item.Id })">
+                                    <a target="_blank" href="@Url.Action("BlogDetail",  new { id = item.Id })">
                                         <img src="@item.ImageUrl" class="img-fluid" alt="@item.Title">
                                     </a>
                                     <div class="card__post__content bg__post-cover">
@@ -78,7 +78,7 @@
                                         </div>
                                         <div class="card__post__title">
                                             <h5>
-                                                <a href="@Url.Action("BlogDetail",  new { id = item.Id })">
+                                                <a target="_blank" href="@Url.Action("BlogDetail",  new { id = item.Id })">
                                                     @Html.Raw(item.Title)
                                                 </a>
                                             </h5>
@@ -86,7 +86,7 @@
                                         <div class="card__post__author-info">
                                             <ul class="list-inline">
                                                 <li class="list-inline-item">
-                                                    <a href="@Url.Action("BlogDetail",  new { id = item.Id })">
+                                                    <a target="_blank" href="@Url.Action("BlogDetail",  new { id = item.Id })">
                                                         Ekrem Özmen
                                                     </a>
                                                 </li>
@@ -123,7 +123,7 @@
                                 <!-- Post Article -->
                                 <div class="article__entry">
                                     <div class="article__image">
-                                        <a href="@Url.Action("BlogDetail",  new { id = item.Id })">
+                                        <a target="_blank" href="@Url.Action("BlogDetail",  new { id = item.Id })">
                                             <img src="@item.ImageUrl" alt="@item.Title" class="img-fluid">
                                         </a>
                                     </div>
@@ -142,7 +142,7 @@
                                             </li>
                                         </ul>
                                         <h5>
-                                            <a href="@Url.Action("BlogDetail",  new { id = item.Id })">
+                                            <a target="_blank" href="@Url.Action("BlogDetail",  new { id = item.Id })">
                                                 @Html.Raw(item.Title)
                                             </a>
                                         </h5>

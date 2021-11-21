@@ -58,6 +58,7 @@ namespace BlogSite.Services.WebSite.HomePage
                         Description = x.Description,
                         ImageUrl = x.ImageUrl,
                         Title = x.Title,
+                        BlogUrl=x.BlogUrl,
                         BlogClick = (int)blogdetay.BlogClick,
                         Date = x.Date,
                         Link = x.Link

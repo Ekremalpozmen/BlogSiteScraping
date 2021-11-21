@@ -12,8 +12,8 @@
             <!-- Post Article -->
             <div class="card__post card__post-list">
                 <div class="image-sm">
-                    <a href="@Url.Action("BlogDetail",  new { id = item.Id })">
-                        <img src="@item.ImageUrl" class="img-fluid" alt="">
+                    <a target="_blank" href="@Url.Action("BlogDetail",  new { id = item.Id })">
+                        <img src="@item.ImageUrl" class="img-fluid" alt="@item.Title">
                     </a>
                 </div>
                 <div class="card__post__body ">
@@ -35,7 +35,7 @@
                         </div>
                         <div class="card__post__title">
                             <h6>
-                                <a href="@Url.Action("BlogDetail",  new { id = item.Id })">
+                                <a target="_blank" href="@Url.Action("BlogDetail",  new { id = item.Id })">
                                     @Html.Raw(item.Title)
                                 </a>
                             </h6>
